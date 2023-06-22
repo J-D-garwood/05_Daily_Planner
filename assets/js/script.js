@@ -1,4 +1,6 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+var date_display = $('#currentDay')
+date_display.text(dayjs().format("dddd, MMMM D"))
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
