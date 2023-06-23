@@ -3,7 +3,6 @@ var date_display = $('#currentDay')
 date_display.text(dayjs().format("dddd, MMMM D"))
 
 var NINE = $('#hour-9')
-NINE.attr('style', 'background-color: ')
 var TEN = $('#hour-10')
 var ELEVEN = $('#hour-11')
 var TWELVE = $('#hour-12')
@@ -13,57 +12,26 @@ var THREE = $('#hour-15')
 var FOUR = $('#hour-16')
 var FIVE = $('#hour-17')
 
-// 9am Code
+var HOURS = [NINE, TEN, ELEVEN, TWELVE, ONE, TWO, THREE, FOUR, FIVE]
 
 function PPF(timeblock, digit) {
-  var hour = moment().hours()
-  hour = hour + 13
+  var hour = dayjs().hour()
   if ((hour - digit)>0) {
-    timeblock.attr('style', 'background-color: grey')
+    timeblock.attr('class', 'row time-block past')
   } else if ((hour - digit)==0) {
-    timeblock.attr('style', 'background-color: red')
+    timeblock.attr('class', 'row time-block present')
   } else {
-    timeblock.attr('style', 'background-color: lime')
+    timeblock.attr('class', 'row time-block future')
   }
 }
 
-PPF(NINE, 9)
-PPF(TEN, 10)
-PPF(ELEVEN, 11)
-PPF(TWELVE, 12)
-PPF(ONE, 13)
-PPF(TWO, 14)
-PPF(THREE, 15)
-PPF(FOUR, 16)
-PPF(FIVE, 17)
-
-
-
-/*
-var hour = moment().hours()
-if ((hour - 9)>0) {
-  NINE.attr('style', 'background-color: grey')
-} else if ((hour - 9)==0) {
-  NINE.attr('style', 'background-color: red')
-} else {
-  NINE.attr('style', 'background-color: lime')
+for (i=0;i<HOURS.length;i++) {
+  PPF(HOURS[i], (i+9))
 }
 
 
-$(function() {
-  PPF = function(timeblock, digit) {
-    var hour = moment().hours()
-    if ((hour - digit)>0) {
-      timeblock.attr('style', 'background-color: grey')
-    } else if ((hour - digit)==0) {
-      timeblock.attr('style', 'background-color: red')
-    } else {
-      timeblock.attr('style', 'background-color: lime')
-    }
-  }
-})
 
-PPF(NINE, 9)
+
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
@@ -79,11 +47,13 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  //DONE
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  //DONE
 });
-*/
