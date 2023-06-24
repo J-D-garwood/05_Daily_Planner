@@ -2,6 +2,16 @@
 var date_display = $('#currentDay')
 date_display.text(dayjs().format("dddd, MMMM D"))
 
+agendaNine = localStorage.getItem("nine")
+agendaTen = localStorage.getItem("ten")
+agendaEleven = localStorage.getItem("eleven")
+agendaTwelve = localStorage.getItem("twelve")
+agendaOne = localStorage.getItem("one")
+agendaTwo = localStorage.getItem("two")
+agendaThree = localStorage.getItem("three")
+agendaFour = localStorage.getItem("four")
+agendaFive = localStorage.getItem("five")
+
 var NINE = $('#hour-9')
 var TEN = $('#hour-10')
 var ELEVEN = $('#hour-11')
@@ -30,11 +40,25 @@ for (i=0;i<HOURS.length;i++) {
 }
 
 
+function save_btn(hour, store) {
+hour.children("button").on("click", function(event) {
+  event.preventDefault()
+  text = hour.children("textarea").val()
+  localStorage.setItem(store, text)
+})
+}
+save_btn(NINE, "nine")
+//$("divs").children("textarea").attr("style", "text-align: center;")
 
-
+//console.log(NINE.children("textarea").text())
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+/*
 $(function () {
+  x = $("divs").children("textarea").text()
+  console.log(x)
+})
+*/
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -56,4 +80,3 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
   //DONE
-});
