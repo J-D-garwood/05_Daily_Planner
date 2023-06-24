@@ -47,7 +47,6 @@ hour.children("button").on("click", function(event) {
   localStorage.setItem(store, text)
 })
 }
-save_btn(NINE, "nine")
 //$("divs").children("textarea").attr("style", "text-align: center;")
 
 //console.log(NINE.children("textarea").text())
