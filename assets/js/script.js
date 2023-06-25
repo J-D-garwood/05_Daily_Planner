@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 var date_display = $('#currentDay')
 date_display.text(dayjs().format("dddd, MMMM D"))
-
+/*
 agendaNine = localStorage.getItem("nine")
 agendaTen = localStorage.getItem("ten")
 agendaEleven = localStorage.getItem("eleven")
@@ -11,6 +11,8 @@ agendaTwo = localStorage.getItem("two")
 agendaThree = localStorage.getItem("three")
 agendaFour = localStorage.getItem("four")
 agendaFive = localStorage.getItem("five")
+*/
+var storageLs = ['nine', 'ten', 'eleven', 'twelve', 'one', 'two', 'three', 'four', 'five']
 
 var NINE = $('#hour-9')
 var TEN = $('#hour-10')
@@ -23,6 +25,14 @@ var FOUR = $('#hour-16')
 var FIVE = $('#hour-17')
 
 var HOURS = [NINE, TEN, ELEVEN, TWELVE, ONE, TWO, THREE, FOUR, FIVE]
+
+function returnSavdTxt(hour, store) {
+  hour.children("textarea").text(localStorage.getItem(store))
+} 
+
+for (i=0;i<HOURS.length;i++) {
+  returnSavdTxt(HOURS[i], storageLs[i])
+}
 
 function PPF(timeblock, digit) {
   var hour = dayjs().hour()
@@ -46,6 +56,10 @@ hour.children("button").on("click", function(event) {
   text = hour.children("textarea").val()
   localStorage.setItem(store, text)
 })
+}
+
+for (i=0;i<HOURS.length;i++) {
+  save_btn(HOURS[i], storageLs[i])
 }
 //$("divs").children("textarea").attr("style", "text-align: center;")
 
